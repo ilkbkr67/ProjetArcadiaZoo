@@ -25,9 +25,15 @@
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" href="#">Nos Services</a>
-                  </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Nos Services
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li><a class="dropdown-item" href="#">Restauration</a></li>
+                          <li><a class="dropdown-item" href="#">Exploration</a></li>
+                          <li><a class="dropdown-item" href="#">Hebergement</a></li>
+                        </ul>                          
                   <li class="nav-item">
                     <a class="nav-link active" href="#">Nos habitats</a>
                   </li>
@@ -48,7 +54,28 @@
         <!--Contenu du site à injcter ici-->
     </main>
 
-    <footer>Le footer du site</footer>
+    <footer class="bg-dark text-white text-center footer">
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <h4>Horaires</h4>
+                <p> Tout les jours de 8h à 20h</p>
+            </div>
+            <div class="col-6 col-lg-4">
+                <h4>Adresse</h4>
+                <p>
+                    Forêt de Brocéliande<br/>
+                    35380 Paimpont
+                </p>
+            </div>
+            <div class="col-6 col-lg-4">
+                <h4>Contact</h4>
+                <p>mailarcadia@mail.com</br>
+                <a class="bg-dark text-white text-center" href="#">Formulaire de contact</a>
+                </p>
+            </div>
+        </div>
+
+    </footer>
     <script type="module" src="Router/Router.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 </body>
