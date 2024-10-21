@@ -12035,4 +12035,59 @@ p {
   transform: translate(-50%, -50%);
   opacity: 0;
   transition: all 0, 3;
+}
+
+figure {
+  display: grid;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
+  justify-content: space-between;
+}
+
+figure > * {
+  grid-area: 1/1;
+  transition: 0.4s;
+}
+
+figure figcaption {
+  display: grid;
+  align-items: end;
+  font-family: sans-serif;
+  font-size: 2.3rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0);
+  padding: 0.75rem;
+  background: var(--c, rgba(0, 0, 0, 0.6));
+  -webkit-clip-path: inset(0 var(--_i, 100%) 0 0);
+          clip-path: inset(0 var(--_i, 100%) 0 0);
+  -webkit-mask: linear-gradient(#000 0 0), linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  -webkit-mask-clip: text, padding-box;
+  margin: -1px;
+}
+
+figure:hover figcaption {
+  --_i: 0%;
+}
+
+figure:hover img {
+  transform: scale(1.2);
+}
+
+@supports not (-webkit-mask-clip: text) {
+  figure figcaption {
+    -webkit-mask: none;
+    color: #fff;
+  }
+}
+.row2 {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+  justify-content: space-between;
 }/*# sourceMappingURL=main.css.map */
