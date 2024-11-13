@@ -11,13 +11,19 @@
                 <div class="form-group">
                   <label for="exampleInputEmail1">Adresse Mail</label>
                   <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                  <div class="invalid-feedback">
+                    Le mail n'est pas au bon format ou inexistant
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Mot de passe</label>
                   <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                   <small id="emailHelp" class="form-text text-muted">Votre mot de passe est unique et perso ne jamais le communiquer</small>
+                  <div class="invalid-feedback">
+                    Le mot de passe n'est pas bon format
+                  </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Connexion</button>
+                <button type="submit" class="btn btn-primary" id="btn-validation-inscription">Connexion</button>
               </form>
         </div>
     </div>
