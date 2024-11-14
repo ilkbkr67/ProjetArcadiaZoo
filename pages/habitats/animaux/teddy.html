@@ -15,7 +15,7 @@
     </article>
     <article>
         <div class="p-4">
-            <h5 class="text-left text-primary"><u>Tableau de suivie</u> <a href="#" class="maj">Mettre à jour</a></h5>
+            <h5 class="text-left text-primary"><u>Tableau de suivie</u> <a data-show="veterinaire-admin" href="#" class="maj">Mettre à jour</a></h5>
         </div>
         <div class="table-responsive">
             <table class="table"> <!--Connecter le tableau a la bdd afin de recupérer ou injecter les infos des veterinaires-->
@@ -60,14 +60,14 @@
     </article>
     <article>
         <div class="p-4">
-            <h5 class="text-left text-primary"><u>Galerie Photo</u> <a href="#" class="maj">Editer les photos</a></h5>
+            <h5 class="text-left text-primary"><u>Galerie Photo</u> <a data-show="employes-admin" href="#" class="maj">Editer les photos</a></h5>
         </div>
         <div class="container">
             <div class="row row-cols-2 row-cols-lg-3">
                 <div class="col p-3">
                     <div class="image-card">
                         <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
-                        <div class="action-image-buttons">
+                        <div data-show="employes-admin" class="action-image-buttons">
                             <button type="button" class="btn btn-outline-light"><i class="bi bi-trash"></i></button>
                             <button type="button" class="btn btn-outline-light"><i class="bi bi-pencil-square"></i></button>
                         </div>
