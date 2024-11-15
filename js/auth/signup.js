@@ -96,21 +96,21 @@ function InscrireUtilisateur(){
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-const raw = JSON.stringify({
-  "firstName": dataform.get("Nom"),
-  "lastName": dataform.get("Prenom"),
-  "email": dataform.get("Email"),
-  "password": dataform.get("Password"),
-});
+    const raw = JSON.stringify({
+        "firstName": dataform.get("Nom"),
+        "lastName": dataform.get("Prenom"),
+        "email": dataform.get("Email"),
+        "password": dataform.get("Password"),
+    });
 
-const requestOptions = {
-  method: "POST",
-  headers: myHeaders,
-  body: raw,
-  redirect: "follow"
-};
+    const requestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+        redirect: "follow"
+    };
 
-fetch("http://127.0.0.1:8000/api/registration", requestOptions)
+fetch(apiUrl+"registration", requestOptions)
   .then(response => {
         if(response.ok){
             return response.json();
