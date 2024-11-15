@@ -60,44 +60,96 @@
     </article>
     <article>
         <div class="p-4">
-            <h5 class="text-left text-primary"><u>Galerie Photo</u> <a data-show="employes-admin" href="#" class="maj">Editer les photos</a></h5>
+            <h5 class="text-left text-primary"><u>Galerie Photo</u></h5>
         </div>
         <div class="container">
+            <div class="text-center">
+                <button data-show="employes-admin" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal">Ajouter une photo</button>
+            </div>
             <div class="row row-cols-2 row-cols-lg-3">
                 <div class="col p-3">
                     <div class="image-card">
                         <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
                         <div data-show="employes-admin" class="action-image-buttons">
-                            <button type="button" class="btn btn-outline-light"><i class="bi bi-trash"></i></button>
-                            <button type="button" class="btn btn-outline-light"><i class="bi bi-pencil-square"></i></button>
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#SupprPhotoModal"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal"><i class="bi bi-pencil-square"></i></button>
                         </div>
                     </div>
                 </div>
                 <div class="col p-3">
-                    <div>
+                    <div class="image-card">
                         <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
+                        <div data-show="employes-admin" class="action-image-buttons">
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#SupprPhotoModal"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal"><i class="bi bi-pencil-square"></i></button>
+                        </div>
                     </div>
                 </div>
                 <div class="col p-3">
-                    <div>
+                    <div class="image-card">
                         <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
+                        <div data-show="employes-admin" class="action-image-buttons">
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#SupprPhotoModal"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal"><i class="bi bi-pencil-square"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="col p-3">
-                    <div>
-                        <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
-                    </div>
-                </div>
-                <div class="col p-3">
-                    <div>
-                        <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
-                    </div>
-                </div>
-                <div class="col p-3">
-                    <div>
-                        <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
-                    </div>
             </div>    
         </div>
     </article>
 </section>
+  
+<!-- Modal Edit-->
+<div class="modal fade" id="EditionPhotoModal" tabindex="-1" aria-labelledby="EditionPhotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="#EditionPhotoModalLabel">Edition Photo</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                        <label for="NamePhotoInput" class="form-label">Titre</label>
+                        <input type="text" class="form-control" id="NamePhotoInput" placeholder="Teddy en train de manger">
+                    </div>  
+                    <div class="mb-3">
+                        <label for="ImageInput" class="form-label">Image</label>
+                        <input type="file" class="form-control" id="ImageInput" placeholder="Parcourir">
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-primary" id="btn-validation-inscription">Enregistrer</button>
+                    </div>                 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Suppr-->
+
+<div class="modal fade" id="SupprPhotoModal" tabindex="-1" aria-labelledby="SupprPhotoModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="#SupprPhotoModalLabel">Voulez-vous vraiment supprimer la photo?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                       <p>Titre</p>
+                       <div class="col p-3">
+                        <div>
+                            <img src="../images/carnivore/teddy/bear-422682_1280.jpg" class="rounded w-100"/>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="button" class="btn btn-danger">Supprimer</button>
+                        <button type="button" class="btn secondary" data-bs-dismiss="modal">Annuler</button>
+                    </div>                 
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

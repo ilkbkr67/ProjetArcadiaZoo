@@ -56,11 +56,12 @@ p{
 .image-card{
     position:relative;
     &:hover{
-        .titre-image{
+        .titre-image,
+        .action-image-buttons{
             opacity: 1;
         }
         img{
-            filter:brightness(0.3);
+            filter: brightness(0.3);
         }
     }
 
@@ -76,6 +77,18 @@ p{
         opacity: 0;
         transition: all 0,3;
     }
+
+    .action-image-buttons{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        padding: 5px;
+        display: flex;
+        justify-content: space-between;
+        opacity: 0;
+        transition: all 0,3;
+    }   
     
 }
 
@@ -88,16 +101,6 @@ p{
     margin-right: calc(-0.5* var(--bs-gutter-x));
     margin-left: calc(-0.5* var(--bs-gutter-x));
     justify-content: space-around;
-}
-
-.action-image-buttons{
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    padding: 5px;
-    display: flex;
-    justify-content: space-between;
 }
 
 .maj{
