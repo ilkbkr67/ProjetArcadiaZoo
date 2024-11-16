@@ -7,7 +7,7 @@ export const allRoutes = [
     new Route("/carnivore", "Les Carnivores", "/pages/habitats/carnivore.html",[]),
     new Route("/herbivore", "Les Herbivores", "/pages/habitats/herbivore.html",[]),
     new Route("/volant", "Les Volants", "/pages/habitats/volant.html",[]),
-    new Route("/teddy", "Teddy", "/pages/habitats/animaux/teddy.html",[]),
+    new Route("/teddy", "Teddy", "/pages/habitats/animaux/teddy.html",[], "js/photo.js"),
     new Route("/cacao", "Cacao", "/pages/habitats/animaux/cacao.html",[]),
     new Route("/service", "Nos services", "/pages/accueil/service.html",[]),
     new Route("/contact", "Nous contacter", "/pages/accueil/contact.html",[]),
