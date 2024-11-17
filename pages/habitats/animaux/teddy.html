@@ -15,13 +15,17 @@
     </article>
     <article>
         <div class="p-4">
-            <h5 class="text-left text-primary"><u>Tableau de suivie</u> <a data-show="veterinaire-admin" href="#" class="maj">Mettre à jour</a></h5>
+            <h5 class="text-left text-primary"><u>Tableau de suivie</u> 
+        </div>
+        <div class="p-4">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Mettre à jour les informations
+            </button>   
         </div>
         <div class="table-responsive">
             <table class="table"> <!--Connecter le tableau a la bdd afin de recupérer ou injecter les infos des veterinaires-->
                 <thead>
                     <tr>
-                        <th scope="col">Nom du véterinaire</th>
                         <th scope="col">date</th>
                         <th scope="col">état de santé</th>
                         <th scope="col">Repas</th>
@@ -31,7 +35,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <th scope="row">John Doe</th>
+
                         <td>20/03/2020</td>
                         <td>Excellent</td>
                         <td>Agneau</td>
@@ -39,7 +43,6 @@
                         <td>RAS</td>
                     </tr>
                     <tr>
-                        <th scope="row">Véronique Dulo</th>
                         <td>14/04/2017</td>
                         <td>Entorse à la patte</td>
                         <td>Mouton</td>
@@ -47,7 +50,6 @@
                         <td>Faire attention a cause de son entorse Teddy est de mauvais humeur</td>
                     </tr>
                     <tr>
-                        <th scope="row">Véronique Dulo</th>
                         <td>14/04/2017</td>
                         <td>Entorse à la patte</td>
                         <td>Mouton</td>
@@ -64,9 +66,9 @@
         </div>
         <div class="container">
             <div class="text-center">
-                <button data-show="employes-admin" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal">Ajouter une photo</button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#EditionPhotoModal">Ajouter une photo</button>
             </div>
-            <div class="row row-cols-2 row-cols-lg-3" id="allImages">
+            <div class="row row-cols-2 row-cols-lg-3" id="allImage">
                 <div class="col p-3">
                     <div class="image-card">
                         <div class="action-image-buttons">
@@ -80,7 +82,7 @@
     </article>
 </section>
   
-<!-- Modal Edit-->
+<!-- Modal Edit photo-->
 <div class="modal fade" id="EditionPhotoModal" tabindex="-1" aria-labelledby="EditionPhotoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -107,7 +109,8 @@
     </div>
 </div>
 
-<!-- Modal Suppr-->
+
+<!-- Modal Suppr photo-->
 
 <div class="modal fade" id="SupprPhotoModal" tabindex="-1" aria-labelledby="SupprPhotoModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -134,3 +137,23 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Edit tableau-->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

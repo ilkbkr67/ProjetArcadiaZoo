@@ -1,7 +1,7 @@
-const photoImage = document.getElementById("allImage");
+const photoImage = document.getElementById("allImages");
 
-let titre = 'Teddy';
-let imgSource = "../images/carnivore/teddy/bear-422682_1280.jpg";
+let titre = 'Cacao';
+let imgSource = "../images/herbivore/ecolo2.jpg";
 
 let monImage = getImage(titre, imgSource);
 
