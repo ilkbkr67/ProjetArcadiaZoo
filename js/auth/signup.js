@@ -101,6 +101,7 @@ function InscrireUtilisateur(){
         "lastName": dataform.get("Prenom"),
         "email": dataform.get("Email"),
         "password": dataform.get("Password"),
+        "roles" : dataform.get("role"),
     });
 
     const requestOptions = {

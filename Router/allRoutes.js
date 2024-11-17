@@ -15,7 +15,7 @@ export const allRoutes = [
     new Route("/restaurant", "Restaurant", "/pages/Nos service/restaurant.html",[]),
     new Route("/nosvisite", "Nos visites", "/pages/Nos service/nosvisite.html",[]),
     new Route("/connexion", "Connexion", "/pages/login/connexion.html",[], "/js/auth/signin.js"),
-    new Route("/inscription", "Inscription(mode Admin)", "/pages/login/inscription.html",["admin"],"/js/auth/signup.js"), //Seul l'admin peut acceder a cette page
+    new Route("/inscription", "Inscription(mode Admin)", "/pages/login/inscription.html",[],"/js/auth/signup.js"), //Seul l'admin peut acceder a cette page
 ];
 
 //Le titre s'affiche comme ceci : Route.titre - websitename
