@@ -1,130 +1,86 @@
 const tokenCookieName = "accesstoken";
-const signoutBtn = document.getElementById("signout-btn");
 const RoleCookieName = "role";
-const apiUrl = "http://127.0.0.1:8000/api/";
+const apiUrl = "http://127.0.0.1:8000/";
 
-signoutBtn.addEventListener("click", signout);
-
-function getRole(){
-    return getCookie(RoleCookieName);
-}
-
-function signout(){
-    eraseCookie(tokenCookieName);
-    eraseCookie(RoleCookieName)
-    window.location.reload();
-}
-
-
-function setToken(token){
-    setCookie(tokenCookieName, token, 7);
-}
-
-function getToken(){
-    return getCookie(tokenCookieName);
-}
-
-function setCookie(name,value,days) {
+function setCookie(name, value, days) {
     var expires = "";
     if (days) {
         var date = new Date();
-        date.setTime(date.getTime() + (days*24*60*60*1000));
+        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
         expires = "; expires=" + date.toUTCString();
     }
-    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
 function getCookie(name) {
     var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i=0;i < ca.length;i++) {
+    var ca = document.cookie.split(";");
+    for (var i = 0; i < ca.length; i++) {
         var c = ca[i];
-        while (c.charAt(0)==' ') c = c.substring(1,c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+        while (c.charAt(0) == " ") c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
 }
 
-function eraseCookie(name) {   
-    document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+function eraseCookie(name) {
+    document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 }
 
-function isConnected(){
-    if(getToken() == null || getToken == undefined){
-        return false;
-    }
-    else{
-        return true;
-    }
+function isConnected() {
+    return getCookie(tokenCookieName) !== null;
 }
 
-function showAndHideElementsForRoles(){
-    const userConnected = isConnected();
-    const role = getRole();
+document.getElementById("btn-validation-inscription").addEventListener("click", async () => {
+    const form = document.getElementById("formulaireInscription");
 
-    let allElementsToEdit = document.querySelectorAll('[data-show]');
-
-    allElementsToEdit.forEach(element =>{
-        switch(element.dataset.show){
-            case 'disconnected': 
-                if(userConnected){
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'connected': 
-                if(!userConnected){
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'admin': 
-                if(!userConnected || role != "admin"){
-                    element.classList.add("d-none");
-                }
-                break;
-            case 'employes-admin': 
-                if(!userConnected || role != "employes-admin"){
-                    element.classList.add("d-none");
-                }
-                break;
-                case 'veterinaire-admin': 
-                if(!userConnected || role != "veterinaire-admin"){
-                    element.classList.add("d-none");
-                }
-                break;
-        }
-    })
-}
-
-function sanitizeHTML(text){
-    const tempHtml = document.createElement('div');
-    tempHtml.textContent = text;
-    return tempHtml.innerHTML;
-}
-
-function getInfosUser(){
-    
-    const myHeaders = new Headers();
-    myHeaders.append("X-AUTH-TOKEN", getToken());
-
-    const requestOptions = {
-        method: "GET",
-        headers: myHeaders,
-        redirect: "follow"
+    const data = {
+        Nom: form.elements.Nom.value.trim(),
+        Prenom: form.elements.Prenom.value.trim(),
+        Email: form.elements.Email.value.trim(),
+        Password: form.elements.Password.value,
+        PasswordConfirm: form.elements.PasswordConfirm.value,
+        Role: Array.from(form.querySelectorAll('input[name="role"]:checked')).map(role => role.value),
     };
 
-    fetch(apiUrl+"account/me", requestOptions)
-    .then(response =>{
-        if(response.ok){
-            return response.json()
+    // Validation côté client
+    if (!data.Nom || !data.Prenom || !data.Email || !data.Password || !data.PasswordConfirm) {
+        alert("Tous les champs sont obligatoires.");
+        return;
+    }
+
+    if (data.Password !== data.PasswordConfirm) {
+        alert("Les mots de passe ne correspondent pas.");
+        return;
+    }
+
+    if (data.Role.length === 0) {
+        alert("Veuillez sélectionner au moins un rôle.");
+        return;
+    }
+
+    try {
+        console.log("Données envoyées :", data);
+
+        const response = await fetch(apiUrl + "register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+            mode: "cors", // Ajout pour CORS
+        });
+
+        if (response.ok) {
+            alert("Inscription réussie !");
+            form.reset(); // Réinitialiser le formulaire
+        } else {
+            const error = await response.json();
+            console.error("Erreur serveur :", error);
+            alert("Erreur : " + (error.message || "Une erreur s'est produite."));
         }
-        else{
-            console.log("Impossibe de récuperer les informations utilisateur")
-        }
-    })
-    .then(result => {
-        return result;
-    })
-    .catch(erroor =>{
-      console.error("Erreur lors de la récupération des données utilisateur", error);  
-    });
-}
+    } catch (error) {
+        console.error("Erreur lors de l'inscription :", error);
+        alert("Une erreur est survenue. Veuillez réessayer.");
+    }
+});
